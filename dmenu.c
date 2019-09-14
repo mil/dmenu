@@ -302,10 +302,17 @@ match(void)
 	if (!preserve)
 		curr = sel = matches;
 
-	if(instant && matches && matches==matchend && !lsubstr) {
-		puts(matches->text);
-		cleanup();
-		exit(0);
+	// instant feature patch compat w/ nonblocking stdin
+	unsigned int numer = 0;
+	if (instant && matchend) {
+		numer++;
+		for (item = matchend; item && item->left; item = item->left)
+			numer++;
+		if (numer == 1) {
+			puts(matches->text);
+			cleanup();
+			exit(0);
+		}
 	}
 
 	calcoffsets();
