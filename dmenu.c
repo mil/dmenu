@@ -244,7 +244,7 @@ drawmenu(void)
 	drw_setscheme(drw, scheme[SchemeNorm]);
 	drw_text(drw, mw - TEXTW(numbers), 0, TEXTW(numbers), bh, lrpad / 2, numbers, 0);
 
-	drw_setscheme(drw, scheme[SchemeSel]);
+	drw_setscheme(drw, scheme[SchemeNorm]);
 	drw_rect(drw, 0, topbar ? mh - 1 : 0, mw, 1, 1, 0);
 
 	drw_map(drw, win, 0, 0, mw, mh);
